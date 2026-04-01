@@ -1,0 +1,19 @@
+- name: Deploy frontend and backend containers from GitHub
+  hosts: all
+  become: yes
+
+  vars:
+    repo_url: "https://github.com/amit6264/FullStack-AWS-Project.git"
+    app_path: "/root/amit/"
+    frontend_image: "frontend-app:latest"
+    backend_image: "backend-app:latest"
+    rds_host: "database-1.cczaiuyycgjn.us-east-1.rds.amazonaws.com"
+    rds_user: "admin"
+    rds_password: "cloud123"
+    rds_port: "3306"
+
+  roles:
+    - common
+    - gitclone
+    - frontend
+    - backend
